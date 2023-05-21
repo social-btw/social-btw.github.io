@@ -1,0 +1,136 @@
+body {
+    background: black;
+    color: white;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    background-image: url(https://www.runescape.com/img/rsp777/bg2.jpg);
+    background-position: top center;
+    background-repeat: repeat-y;
+    text-align: center;
+    margin: 0;
+    min-width: 960px;
+    overflow-y: scroll;
+}
+
+.centerDiv {
+    background: url(https://www.runescape.com/img/rsp777/bg2.jpg) repeat-y scroll center top black;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+
+div,td {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+}
+
+
+
+/*
+
+*/
+img.miniimg {
+    height: 16px;
+    width: 16px;
+}
+
+.personal-hiscores__table table { /*Specificity class*/
+    margin-right: 30px;
+    border-spacing: 0;
+}
+
+
+#col1, #col2, #col3 {
+
+}
+
+/* col1 */
+#col1 {
+    width: 175px;
+}
+/* xcol1 */
+/* col2 */
+#col2 {
+    width: 380px;
+    margin: 10px 15px 0px 5px;
+}
+
+/* xcol2 */
+/* col3 */
+#col3 {
+    width: 155px;
+}
+
+#headerHiscores {
+    background: url(https://www.runescape.com/img/rsp777/hiscores/scroll_top.gif) no-repeat;
+    width: 379px;
+    height: 36px;
+}
+
+.hiscoresHiddenBG {
+    width: 372px;
+    background: #c2ab79;
+    margin-left: 5px;
+}
+
+#contentHiscores {
+    width: 379px;
+    position: relative;
+    background: url(https://www.runescape.com/img/rsp777/hiscores/scroll_middle.gif) repeat-y;
+    margin: 0 -5px;
+    line-height: 18px;
+    color: #000;
+}
+
+#contentHiscores caption {
+    font-weight: bold;
+    color: #000;
+}
+
+th, td {
+    color: #000;
+}
+
+#footerHiscores {
+    background: url(https://www.runescape.com/img/rsp777/hiscores/scroll_bottom.gif) no-repeat;
+    width: 379px;
+    height: 36px;
+}
+
+
+.left {
+    text-align: left;
+    margin-right: auto;
+}
+
+.right {
+    text-align: right;
+    margin-left: auto;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td.win {
+    text-align: right;
+    color: forestgreen;
+    font-weight: bold;
+}
+
+.personal-hiscores__pagination {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+}
