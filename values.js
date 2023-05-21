@@ -1,12 +1,12 @@
-const ENDPOINTS = [
-  'https://api.wiseoldman.net/v2/competitions/24795/csv?table=participants',
-  'https://api.wiseoldman.net/v2/competitions/24796/csv?table=participants',
-  'https://api.wiseoldman.net/v2/competitions/24797/csv?table=participants',
-  'https://api.wiseoldman.net/v2/competitions/24798/csv?table=participants',
-  'https://api.wiseoldman.net/v2/competitions/24799/csv?table=participants',
-  'https://api.wiseoldman.net/v2/competitions/24800/csv?table=participants',
-  'https://api.wiseoldman.net/v2/competitions/24801/csv?table=participants'
-]
+const ENDPOINTS = {
+  'hitpoints': 'https://api.wiseoldman.net/v2/competitions/24795/csv?table=participants',
+  'attack': 'https://api.wiseoldman.net/v2/competitions/24796/csv?table=participants',
+  'strength': 'https://api.wiseoldman.net/v2/competitions/24797/csv?table=participants',
+  'defense': 'https://api.wiseoldman.net/v2/competitions/24798/csv?table=participants',
+  'range': 'https://api.wiseoldman.net/v2/competitions/24799/csv?table=participants',
+  'prayer': 'https://api.wiseoldman.net/v2/competitions/24800/csv?table=participants',
+  'magic': 'https://api.wiseoldman.net/v2/competitions/24801/csv?table=participants'
+}
 
 const renderRow = (rowNum, username, score) => {
   const tbody = document.getElementById('personal-hiscores__tbody');
@@ -36,12 +36,14 @@ const renderRow = (rowNum, username, score) => {
   row.appendChild(scoreCell);
 }
 
-const getScores = () => {
+const getScores = (limit, skill) => {
   let scores = {};
 
   let requests = [];
 
-  ENDPOINTS.forEach(url => {
+  const endpoints = skill ? [ENDPOINTS[skill]] : Object.values(ENDPOINTS)
+
+  endpoints.forEach(url => {
     requests.push(fetch(url).then(response => response.text()).then(body => {
       let rows = CSVToArray(body);
       rows.shift();
@@ -64,7 +66,7 @@ const getScores = () => {
       return b[1] - a[1];
     });
 
-    sortable.forEach((value, index) => {
+    sortable.slice(0, limit).forEach((value, index) => {
       renderRow(index + 1, value[0], value[1]);
     })
   })
@@ -157,5 +159,3 @@ function CSVToArray(strData, strDelimiter) {
   // Return the parsed data.
   return (arrData);
 }
-
-getScores();
