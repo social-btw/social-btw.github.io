@@ -14,9 +14,9 @@ jobs:
         competitionId: [ 24795, 24796, 24797, 24798, 24799, 24800, 24801 ]
     steps:
       - run: >
-       curl -X POST https://api.wiseoldman.net/v2/competitions/${{ matrix.competitionId }}/update-all 
-        -H "Content-type: application/json" 
-        -d '{
-            "verificationCode": "${{ secrets.CODE }}"
-        }'
+          curl -X POST https://api.wiseoldman.net/v2/competitions/${{ matrix.competitionId }}/update-all 
+            -H "Content-type: application/json" 
+            -d '{
+                "verificationCode": "${{ secrets.CODE }}"
+            }'
         
