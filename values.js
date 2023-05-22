@@ -38,38 +38,43 @@ const renderRow = (rowNum, username, score) => {
 
 const getScores = (limit, skill) => {
   let scores = {};
-
   let requests = [];
-
   const endpoints = skill ? [ENDPOINTS[skill]] : Object.values(ENDPOINTS)
 
   endpoints.forEach(url => {
-    requests.push(fetch(url).then(response => response.text()).then(body => {
-      let rows = CSVToArray(body);
-      rows.shift();
+    requests.push(fetch(url)
+      .then(response => response.text())
+      .then(body => {
+        let rows = CSVToArray(body);
+        rows.shift();
 
-      rows.forEach(row => {
-        let currentScore = scores[row[1]] || 0;
+        rows.forEach(row => {
+          let currentScore = scores[row[1]] || 0;
 
-        scores[row[1]] = currentScore + parseInt(row[4]);
+          scores[row[1]] = currentScore + parseInt(row[4]);
+        })
+      }));
+  })
+
+  Promise.all(requests)
+    .then(() => {
+      let sortable = [];
+      for (var user in scores) {
+        sortable.push([user, scores[user]]);
+      }
+
+      sortable.sort(function (a, b) {
+        return b[1] - a[1];
+      });
+
+      document.getElementById("personal-hiscores__loading").remove();
+      sortable.slice(0, limit).forEach((value, index) => {
+        renderRow(index + 1, value[0], value[1]);
       })
-    }));
-  })
-
-  Promise.all(requests).then(() => {
-    let sortable = [];
-    for (var user in scores) {
-      sortable.push([user, scores[user]]);
-    }
-
-    sortable.sort(function (a, b) {
-      return b[1] - a[1];
-    });
-
-    sortable.slice(0, limit).forEach((value, index) => {
-      renderRow(index + 1, value[0], value[1]);
     })
-  })
+    .catch(e => {
+      renderRow('', 'Too many requests! Try again in 5 minutes please', '🐇');
+    })
 }
 
 
