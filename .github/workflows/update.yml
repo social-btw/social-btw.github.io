@@ -1,7 +1,6 @@
 name: Update all competitions
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
