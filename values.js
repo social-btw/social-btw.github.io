@@ -69,7 +69,7 @@ const getScores = (limit, skill) => {
 
       document.getElementById("personal-hiscores__loading").remove();
       sortable.slice(0, limit).forEach((value, index) => {
-        renderRow(index + 1, value[0], value[1]);
+        renderRow(index + 1, value[0], value[1].toLocaleString());
       })
     })
     .catch(e => {
