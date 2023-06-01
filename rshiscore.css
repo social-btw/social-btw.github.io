@@ -1,3 +1,11 @@
+img#gone-fishing {
+    width: 85%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 5%;
+}
+
+
 body {
     background: black;
     color: white;
