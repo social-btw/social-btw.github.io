@@ -1,11 +1,9 @@
 const ENDPOINTS = {
-  'hitpoints': 'https://api.wiseoldman.net/v2/competitions/24795/csv?table=participants',
-  'attack': 'https://api.wiseoldman.net/v2/competitions/24796/csv?table=participants',
-  'strength': 'https://api.wiseoldman.net/v2/competitions/24797/csv?table=participants',
-  'defense': 'https://api.wiseoldman.net/v2/competitions/24798/csv?table=participants',
-  'range': 'https://api.wiseoldman.net/v2/competitions/24799/csv?table=participants',
-  'prayer': 'https://api.wiseoldman.net/v2/competitions/24800/csv?table=participants',
-  'magic': 'https://api.wiseoldman.net/v2/competitions/24801/csv?table=participants'
+  'slayer': 'https://api.wiseoldman.net/v2/competitions/25465/csv?table=participants',
+  'thieving': 'https://api.wiseoldman.net/v2/competitions/25464/csv?table=participants',
+  'firemaking': 'https://api.wiseoldman.net/v2/competitions/25463/csv?table=participants',
+  'construction': 'https://api.wiseoldman.net/v2/competitions/25462/csv?table=participants',
+  'agility': 'https://api.wiseoldman.net/v2/competitions/25461/csv?table=participants',
 }
 
 const renderRow = (rowNum, username, score) => {
